@@ -1,0 +1,14 @@
+body {
+    background-color: #282828;
+    color: #ebdbb2;
+    font-family: "Lucida Console", monospace;
+}
+
+.links {
+    text-align: justify;
+}
+
+.main {
+    text-align: center;
+    margin: 0px auto;
+}

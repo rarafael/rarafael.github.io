@@ -4,6 +4,14 @@ body {
     font-family: "Lucida Console", monospace;
 }
 
+a:link {
+    color: #83a598;
+}
+
+a:visited {
+    color: #b16286;
+}
+
 .links {
     text-align: justify;
 }

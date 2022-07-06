@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <title>Ramblies - C Cheatsheet</title>
+</head>
+<body>
+
+  <div class="main">
+  <p><table style="margin: 0px auto;border-collapse:collapse;">
+    <caption>Data Types:</caption>
+    <style>
+      td { border: 1px solid black; }
+    </style>
+    <tr>
+      <th>x86 type</th>
+      <th>name</th>
+      <th>bytes / bits</th>
+      <th>(unsigned) max value</th>
+      <th>(signed) range</th>
+    </tr>
+    <tr>
+      <td>byte</td>
+      <td>char</td>
+      <td>1 / 8</td>
+      <td>255</td>
+      <td>-126 to 125</td>
+    </tr>
+    <tr>
+      <td>word</td>
+      <td>short</td>
+      <td>2 / 16</td>
+      <td>65536</td>
+      <td>-32768 to 32767</td>
+    </tr>
+    <tr>
+      <td>dword</td>
+      <td>int</td>
+      <td>4 / 32</td>
+      <td>(2^32)-1</td>
+      <td>-(2^31) to (2^31)-1</td>
+    </tr>
+    <tr>
+      <td>qword</td>
+      <td>long</td>
+      <td>8 / 64</td>
+      <td>(2^64)-1</td>
+      <td>-(2^63) to (2^63)-1</td>
+    </tr>
+    <tr>
+      <td>qword</td>
+      <td>long long</td>
+      <td>8 / 64</td>
+      <td>(2^64)-1</td>
+      <td>-(2^63) to (2^63)-1</td>
+    </tr>
+    </table>
+    <div class="note">
+     NOTE: byte sizes depends on the system
+    </div></p>
+
+  <p><table style="margin: 0px auto;border-collapse:collapse;">
+    <caption>libc Headers:</caption>
+    <style>
+      td { border: 1px solid black; }
+    </style>
+    <tr>
+      <th>header</th>
+      <th>header description</th>
+    </tr>
+    <tr>
+      <td>stdio.h</td>
+      <td>standard input/output; Includes FILE type definition, file interaction<br>
+          functions and interactions with stdin/stdout/stderr</td>
+    </tr>
+    <tr>
+      <td>stdlib.h</td>
+      <td>standard library; exit definitions and general use OS functions,<br>
+          memory management functions and number-ascii translations</td>
+    </tr>
+    <tr>
+      <td>stdint.h</td>
+      <td>standard integers; type definition for fixed bit-sized integers,<br>
+          definition of values (max/min) for each type</td>
+    </tr>
+    <tr>
+      <td>math.h</td>
+      <td>math library; defines a lot of math-related functions, from equations<br>
+          to comparisons and defines several constants and max values</td>
+    </tr>
+    <tr>
+      <td>string.h</td>
+      <td>pointer manipulation; defines several pointer/string manipulation<br>
+          functions like memcpy and memset</td>
+    </tr>
+    <tr>
+      <td>unistd.h</td>
+      <td>miscellaneous type definitions and macros, OS functions and utility<br>
+          functions for argument checking and process manipulation</td>
+    </tr>
+  </table></p>
+
+  <p>keywords:<br>
+  <table style="width=100%;margin: 0px auto;border-collapse:collapse;">
+    <tr>
+      <th>Keyword</th>
+      <th>Usage</th>
+    </tr>
+    <tr><td><b align="left">[TYPE] [VARIABLE]</b></td><td>Defines VARIABLE as TYPE<br></td>
+    <tr><td><b align="left">typedef [DEFINITION] [TYPE]</b></td><td>Makes DEFINITION an usable keyword TYPE<br></td>
+    <tr><td><b align="left">struct [NAME] { [MEMBERS] }</b></td><td>Create a structure NAME with MEMBERS that can be accessed with '.' or '->'<br></td>
+    <tr><td><b align="left">enum [NAME] { [MEMBERS] }</b></td><td>Creates a default 0 indexed enum NAME with MEMBERS<br></td>
+    <tr><td><b align="left">union [NAME] { [MEMBERS] }</b></td><td>Creates an union NAME with MEMBERS (unions only use one pointer to store data)<br></td>
+    <tr><td><b align="left">register [VARIABLE]</b></td><td>Suggests the compiler to store VARIABLE in a register when compiling<br></td>
+    <tr><td><b align="left">volatile [VARIABLE]</b></td><td>Suggests that VARIABLE can change before being accessed again I.E. a hardware device like a mouse<br></td>
+    <tr><td><b align="left">goto [SUBROUTINE]</b></td><td>Jumps to SUBROUTINE<br></td>
+    <tr><td><b align="left">if( [CONDITION] ) { [STATEMENT] }</b></td><td>If CONDITION is true, then proceed to execute STATEMENT<br></td>
+    <tr><td><b align="left">else { [STATEMENT] }</b></td><td>Use after 'if', case the condition is false, execute STATEMENT<br></td>
+    <tr><td><b align="left">while( [CONDITION] ) { [STATEMENT] }</b></td><td>While CONDITION is true, execute STATEMENT<br></td>
+    <tr><td><b align="left">break</b></td><td>Stop executing loop<br></td>
+    <tr><td><b align="left">return [RET]</b></td><td>Return RET to function<br></td>
+    <tr><td><b align="left">const [TYPE]</b></td><td>Make TYPE non-modifiable<br></td>
+    <tr><td><b align="left">for([START];[CONDITION];[DO]) { [STATEMENT] }</b></td><td>Execute START once, and while CONDITION is true proceed to execute DO then STATEMENT<br></td>
+    <tr><td><b align="left">sizeof [THING]</b></td><td>Returns 'size_t' size of THING<br></td>
+    <tr><td><b align="left">restrict [TYPE]</b></td><td>Suggests to the compiler TYPE won't be used by another declaration, produces optimizations<br></td>
+    <tr><td><b align="left">do { [STATEMENT] } while ( [CONDITION] )</b></td><td>Executes STATEMENT once and then while CONDITION is true<br></td>
+    <tr><td><b align="left">switch( [VARIABLE] ) case [CONDITION]: [STATEMENT]</b></td><td>Switch case with VARIABLE, proceed to execute STATEMENT if CONDITION is true<br></td>
+    <tr><td><b align="left">default: [STATEMENT]</b></td><td>Switch case default, if no case is true proceed to execute STATEMENT<br></td>
+    <tr><td><b align="left">auto [TYPE]</b></td><td>Defines that the current TYPE will only be used in this scope block (implicit)<br></td>
+    <tr><td><b align="left">extern [TYPE]</b></td><td>Allows TYPE to be used outside of the scope block<br></td>
+    <tr><td><b align="left">static [TYPE]</b></td><td>Makes TYPE visible outside of it's scope block<br></td>
+  </table></p>
+  </div>
+
+  <div class="links">
+    <h3>Links:</h3>
+    <p>
+      <a href="../index.html">Main Page</a><br>
+    </p>
+  </div>
+
+</body>

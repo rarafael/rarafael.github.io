@@ -6,12 +6,15 @@
 </head>
 <body>
 
+  <div class="topmenu">
+    <a href="../index.html">Main Page</a><br>
+  </div>
+  <style>
+    td { border: 1px solid black; }
+  </style>
   <div class="main">
   <p><table style="margin: 0px auto;border-collapse:collapse;">
     <caption>Data Types:</caption>
-    <style>
-      td { border: 1px solid black; }
-    </style>
     <tr>
       <th>x86 type</th>
       <th>name</th>
@@ -54,16 +57,20 @@
       <td>(2^64)-1</td>
       <td>-(2^63) to (2^63)-1</td>
     </tr>
+    <tr>
+      <td>byte</td>
+      <td>_Bool</td>
+      <td>1 / 8</td>
+      <td>true (1) or false (0)</td>
+      <td>true (1) or false (0)</td>
+    </tr>
     </table>
-    <div class="note">
+    <div style="text-align: center;">
      NOTE: byte sizes depends on the system
     </div></p>
 
   <p><table style="margin: 0px auto;border-collapse:collapse;">
     <caption>libc Headers:</caption>
-    <style>
-      td { border: 1px solid black; }
-    </style>
     <tr>
       <th>header</th>
       <th>header description</th>
@@ -84,6 +91,10 @@
           definition of values (max/min) for each type</td>
     </tr>
     <tr>
+      <td>stdbool.h</td>
+      <td>boolean definitions</td>
+    </tr>
+    <tr>
       <td>math.h</td>
       <td>math library; defines a lot of math-related functions, from equations<br>
           to comparisons and defines several constants and max values</td>
@@ -100,8 +111,8 @@
     </tr>
   </table></p>
 
-  <p>keywords:<br>
-  <table style="width=100%;margin: 0px auto;border-collapse:collapse;">
+  <p><table style="width=100%;margin: 0px auto;border-collapse:collapse;">
+    <caption>keywords:</caption>
     <tr>
       <th>Keyword</th>
       <th>Usage</th>
@@ -130,13 +141,6 @@
     <tr><td><b align="left">extern [TYPE]</b></td><td>Allows TYPE to be used outside of the scope block<br></td>
     <tr><td><b align="left">static [TYPE]</b></td><td>Makes TYPE visible outside of it's scope block<br></td>
   </table></p>
-  </div>
-
-  <div class="links">
-    <h3>Links:</h3>
-    <p>
-      <a href="../index.html">Main Page</a><br>
-    </p>
   </div>
 
 </body>

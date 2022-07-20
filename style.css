@@ -1,5 +1,5 @@
 body {
-    background-color: #282828;
+    background-color: #1d2021;
     color: #ebdbb2;
     font-family: "Lucida Console", monospace;
 }
@@ -16,7 +16,18 @@ a:visited {
     text-align: justify;
 }
 
+.topmenu {
+    background-color: #282828;
+    width: 100%;
+    font-size: 14px;
+}
+
 .main {
-    text-align: center;
-    margin: 0px auto;
+    background-color: #282828;
+    text-align: left;
+    margin: auto;
+    padding: 20px;
+    word-wrap: break-word;
+    max-width: 900px;
+    line-height: 1.2;
 }

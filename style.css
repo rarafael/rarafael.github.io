@@ -26,8 +26,8 @@ body {
 }
 
 .content {
-    margin: auto;
-    width: 40%;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .footer {

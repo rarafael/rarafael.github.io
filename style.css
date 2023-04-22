@@ -23,6 +23,7 @@ html {
 body {
     background-color: #3A3632;
     padding-bottom: 100px;
+    font-family: "Ubuntu", Serif;
 }
 
 .content {
@@ -41,4 +42,6 @@ body {
 
     outline-style: solid;
     outline-color: #0E0C0C;
+
+    font-family: "Ubuntu Mono", Mono;
 }

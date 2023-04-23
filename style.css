@@ -1,6 +1,7 @@
 * {
     color: #BAA67F;
     box-sizing: border-box;
+    font-display: fallback;
 }
 
 a {
@@ -24,6 +25,7 @@ body {
     background-color: #3A3632;
     padding-bottom: 100px;
     font-family: "Ubuntu", Serif;
+    text-align: justify;
 }
 
 .content {

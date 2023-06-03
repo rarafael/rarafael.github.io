@@ -20,14 +20,40 @@
         <h4>about me:</h4>
         <image src="wizard.webp" alt="unix wizard doing wizard stuff" width="350px" height="350px">
         <p>
+            Florianópolis - Santa Catarina - Brazil <image src="brazil.webp" alt="brazilian flag"><br>
+            14th of December, 2005 [<span id="age"></span>yo]<br>
+            <script>
+                const bday = new Date('14 Dec 2005 00:00:00 UTC-3').getTime();
+                var cur = new Date().getTime();
+                var dif = (cur / 1000 / 60 / 60 / 24) - ((bday / 1000 / 60 / 60 / 24) + 4);
+                document.getElementById("age").innerHTML = Math.floor(dif / 365);
+            </script>
+        </p>
+
+        <p>
+        <details>
+            <summary>
+                what I use
+            </summary>
+            <p>
+                <u>OS</u>: Gentoo Linux<br>
+                <u>Editor</u>: neovim<br>
+                <u>WM</u>: x11/dwm<br>
+                <u>Term</u>: kitty<br>
+                all my configs are located at <a href="https://github.com/rarafael/configs">my github config repository</a>
+            </p>
+        </details>
+        </p>
+
+        <p>
             I do recreational programming every now and then.
         </p>
         <p>
-            contact me at: <a href="mailto:personal@rarafael.net">personal@rarafael.net</a>
+            contact me: <a style="cursor: url(cur_mail.webp), auto;">personal&ltat>rarafael&ltdot>net</a>
         </p>
         <p>
             <a href="https://gentoo.org">
-                <image src="gentoo-badge.webp" width="80px" height="15px">
+                <image src="gentoo-badge.webp" alt="gentoo linux" width="80px" height="15px" style="cursor: url(cur_click.webp), pointer;">
             </a>
         </p>
 
@@ -37,6 +63,7 @@
             <li><a href="https://github.com/rarafael/cstr">cstr</a> - string library for c</li>
             <li><a href="https://github.com/rarafael/many-structures">many-structures</a> - some data structures in c</li>
             <li><a href="https://github.com/rarafael/minfetch">minfetch</a> - linux distro fetching program</li>
+            <li><a href="https://github.com/rarafael/pygoscelis">pygoscelis</a> - my gentoo ebuild repository</li>
         </ul>
     </div>
 

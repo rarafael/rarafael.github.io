@@ -1,14 +1,17 @@
 * {
     color: #BAA67F;
     box-sizing: border-box;
+    cursor: url(cur_norm.webp), auto;
 }
 
 a {
     outline: none;
+    cursor: url(cur_click.webp), pointer;
 }
 
 a:link {
     color: #98BC37;
+    cursor: url(cur_click.webp), pointer;
 }
 
 a:visited {
@@ -27,9 +30,23 @@ body {
     text-align: justify;
 }
 
+details {
+    background-color: #1F1F1F;
+    padding: 0.3rem;
+    max-width: 30rem;
+}
+
+summary {
+    font-weight: bold;
+    background-color: #131313;
+    padding: 0.3rem;
+    list-style-type: "❥";
+    cursor: url(cur_click.webp), pointer;
+}
+
 .content {
     max-width: 700px;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 
 .footer {
@@ -37,9 +54,10 @@ body {
     background-color: #1C1B19;
     width: 100%;
     height: 100px;
+    left: 0;
     bottom: 0;
     padding: 10px;
-    margin: -10px;
+    text-align: left;
 
     outline-style: solid;
     outline-color: #0E0C0C;

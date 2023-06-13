@@ -34,18 +34,23 @@
         </p>
 
         <p>
-            <input type="text" id="number" required inputmode="numeric" autocomplete="off" placeholder="input number"/>
+            <input type="text" id="number" required autocomplete="off" placeholder="input number"/>
         </p>
         <p>
-            output number: <span id="output" />
+            <span id="output" style="font-size:30px;font-family:'Ubuntu Mono';background-color:#181818;padding:4px;"/>
         </p>
         <script>
             const input_base = document.getElementById("inp_base");
             const output_base = document.getElementById("out_base");
             const input_num = document.getElementById("number");
+            const SYMBOLS = "0123456789ABCDEFGHIJKLMNOPQRSTYUVabcdefghijklmnopqrstyuv+/";
 
             var output_num = 0;
             input_num.addEventListener("input", () => {
+                if(input_base.value == 16)
+                    input_num.setAttribute("inputmode", "text");
+                else
+                    input_num.setAttribute("inputmode", "numeric");
                 output_num = parseInt(input_num.value, input_base.value).toString(output_base.value).toUpperCase();
                 document.getElementById("output").innerHTML = output_num;
             });

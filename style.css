@@ -36,11 +36,18 @@ details {
     max-width: 40rem;
 }
 
+details > summary {
+    list-style-type: "+ ";
+}
+
+details[open] > summary {
+    list-style-type: "- ";
+}
+
 summary {
     font-weight: bold;
     background-color: #131313;
     padding: 0.3rem;
-    list-style-type: "❥";
     cursor: url(https://rarafael.net/assets/cur_click.webp), pointer;
 }
 

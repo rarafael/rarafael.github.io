@@ -1,90 +1,44 @@
 * {
-    color: #BAA67F;
-    box-sizing: border-box;
-    cursor: url(https://rarafael.net/assets/cur_norm.webp), auto;
+    background-color: #000;
+    color: #fff;
+}
+
+code {
+    background-color: #222;
+    font-size: 12px;
+}
+
+pre {
+    background-color: #222;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+body {
+    font-size: 16px;
+    max-width: 650px;
+    padding: 10px;
+    text-align: justify;
+    line-height: 1.3;
+    margin: 40px auto;
+}
+
+footer {
+    padding-top: 30px;
 }
 
 a {
     outline: none;
-    cursor: url(https://rarafael.net/assets/cur_click.webp), pointer;
 }
 
 a:link {
     color: #98BC37;
-    cursor: url(https://rarafael.net/assets/cur_click.webp), pointer;
 }
 
 a:visited {
     color: #E02C6D;
-}
-
-html {
-    min-height: 100%;
-    position: relative;
-}
-
-body {
-    background-color: #3A3632;
-    padding-bottom: 100px;
-    font-family: "Ubuntu", Serif;
-    text-align: justify;
-}
-
-details {
-    background-color: #1F1F1F;
-    padding: 0.3rem;
-    max-width: 40rem;
-}
-
-details > summary {
-    list-style-type: "+ ";
-}
-
-details[open] > summary {
-    list-style-type: "- ";
-}
-
-summary {
-    font-weight: bold;
-    background-color: #131313;
-    padding: 0.3rem;
-    cursor: url(https://rarafael.net/assets/cur_click.webp), pointer;
-}
-
-input {
-    background-color: #131313;
-    color: #BAA67F;
-    border: 0px;
-    padding: 0.5rem;
-    font-family: "Ubuntu Mono", Mono;
-    font-size: 18px;
-}
-
-select {
-    background-color: #131313;
-    color: #BAA67F;
-    border: 3px solid #202020;
-    padding: 0.1rem;
-    font-family: "Ubuntu Mono", Mono;
-    font-size: 18px;
-}
-
-.content {
-    max-width: 40rem;
-}
-
-.footer {
-    position: absolute;
-    background-color: #1C1B19;
-    width: 100%;
-    height: 100px;
-    left: 0;
-    bottom: 0;
-    padding: 10px;
-    text-align: left;
-
-    outline-style: solid;
-    outline-color: #0E0C0C;
-
-    font-family: "Ubuntu Mono", Mono;
 }

@@ -1,93 +1,27 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="my personal web page">
-    <meta property="og:image" content="https://rarafael.net/wizard.webp">
-    <title>rarafael.net</title>
-    <link rel="icon" href="https://rarafael.net/assets/icon.webp" type="image/gif">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Ubuntu+Mono">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icon.webp" type="image/gif">
+  <title>home</title>
 </head>
 
+<p><img src="tragedian.webp" alt="pathologic tragedian"></p>
 <body>
-    <div class="content">
-        <h4>about me:</h4>
-        <image src="wizard.webp" alt="unix wizard doing wizard stuff" width="230px" height="230px">
-        <p>
-            Florianópolis - Santa Catarina - Brazil <image src="brazil.webp" alt="brazilian flag" width="18px" height="13px"><br>
-            14th of December, 2005 [<span id="age"></span>yo]<br>
-            <script>
-                const bday = new Date('14 Dec 2005 00:00:00 UTC-3').getTime();
-                var cur = new Date().getTime();
-                var dif = (cur / 1000 / 60 / 60 / 24) - ((bday / 1000 / 60 / 60 / 24) + 4);
-                document.getElementById("age").innerHTML = Math.floor(dif / 365);
-            </script>
-        </p>
-
-        <p>
-        <details>
-            <summary>what I use</summary>
-            <p>
-                <u>OS</u>: Gentoo Linux<br>
-                <u>Editor</u>: neovim<br>
-                <u>WM</u>: x11/dwm<br>
-                <u>Term</u>: kitty<br>
-                all my configs are located at <a href="https://github.com/rarafael/configs">my github config repository</a>
-            </p>
-        </details>
-        </p>
-
-        <p>
-        <details>
-            <summary>socials and tools</summary>
-            <p>
-                <a rel="me" href="https://mastodon.social/@rarafael">my mastodon account</a><br>
-                <a href="random/base.html">an online number base converter</a><br>
-                <a href="random/clock.html">an online clock</a><br>
-                <a href="random/rng.html">an online random number generator</a>
-            </p>
-        </details>
-        </p>
-
-        <p>
-            I do recreational programming every now and then.<br>
-            <a href="blog/summary.html">here is a couple of blog posts</a>
-        </p>
-
-        <p>
-            <!-- Last blog post space -->
-        </p>
-
-        <p>
-            contact me: <span style="cursor: url(https://rarafael.net/assets/cur_mail.webp), auto;">personal&ltat>rarafael&ltdot>net</a>
-        </p>
-        <p>
-            <a href="https://gentoo.org">
-                <image src="gentoo-badge.webp" alt="gentoo linux" width="80px" height="15px" style="cursor: url(https://rarafael.net/assets/cur_click.webp), pointer;">
-            </a>
-        </p>
-
-        <h4>my stuff:</h4>
-        <ul style="list-style-type:'* ';">
-            <li><a href="https://github.com/rarafael/many-structures">many-structures</a> - some data structures in c</li>
-            <li><a href="https://github.com/rarafael/pygoscelis">pygoscelis</a> - my gentoo ebuild repository</li>
-            <li><a href="https://github.com/rarafael/scratchpad">scratchpad</a> - a repo with small projects and utils</li>
-        </ul>
-    </div>
-
-    <footer class="footer">
-        <ul style="list-style-type:none;">
-            <li>color scheme ripped from <a href="https://srcery.sh/">srcery</a></li>
-            <li><a href="index.html">home</a></li>
-            <li>check out my <a href="https://github.com/rarafael">github</a></li>
-        </ul>
-    </footer>
+  <p>
+    <h2>about</h2>
+    brazilian 17 year old who enjoys programming and Linux<br>
+    here's my <a href="https://github.com/rarafael">github</a><br>
+    contact me: <code>personal at rarafael.net</code>
+  <p>
+    <h2>blog posts</h2>
+    <ul>
+      <li>[24/06/2023] <a href="blog/oop_in_c.html">object oriented programming in C</a></li>
+    </ul>
+  </p>
+  <p>
+  </p>
 </body>
-
 </html>

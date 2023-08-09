@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../icon.webp" type="image/gif">
+  <title>Vim Config Stuff</title>
+</head>
+
+<body>
+  <h1>Vim Config Stuff</h1>
+  <p style="font-size:14px;text-align:left;"><a href="../index.html">home</a></p>
+  <p style="font-size:14px;text-align:center;">[08/08/2023]</p>
+  <p>
+    The recent <a href="https://groups.google.com/g/vim_announce/c/tWahca9zkt4">passing of Bram Moolenaar</a>,
+    the original creator of <a href="https://www.vim.org">Vim</a> and it's maintainer, has been one of the
+    most unfortunate events of the year in the area of technology so far. Bram was probably one of the most 
+    influential software engineers and his editor defined a lot of decisions that would shape the editors
+    used by most people nowadays.
+  </p>
+
+  <p>
+    I'll introduce here some interesting bits of Vim/<a href="https://neovim.io">NeoVim</a> configuration that
+    I find very useful on a daily basis.
+  </p>
+
+  <h2>paragraph browsing</h2>
+  <p>
+    Vim has paragraph browsing embedded into it and mapped to } and { (see <a href="https://vimhelp.org/motion.txt.html#%7B">the help pages</a>).
+    If you're not an US keyboard user however, this keybind is quite unintuitive, for example: in my ABNT2
+    keyboard, the } and { are mapped one on top of another.
+  </p>
+
+  <p style="font-size:14px;">
+    <img src="../resources/abnt2_keys.webp" alt="} and { on ABNT2"><br>
+    <i>} and { on ABNT2</i>
+  </p>
+
+  <p>
+    My simple solution to this is to remap these keys to J and K (<i>capital j and k</i>). 
+    <code><pre>
+noremap J }
+noremap K {
+    </pre></code>
+    Not only are they
+    easier to reach and more intuitive, the original keybinds are not particularly useful. <a href="https://vimhelp.org/change.txt.html#J">J</a>
+    merges your current line with the top one, which is not something that I find occurs very often.
+    <a href="https://vimhelp.org/various.txt.html#K">K</a> tries to open a manpage referent to the word under
+    your cursor. While this might've been useful in the past, when libraries were mostly documented through
+    manpages, nowadays a lot of programs have only HTML documentations available (and Doxygen is
+    <a href="https://stackoverflow.com/questions/15129452/can-doxygen-be-coerced-into-creating-decent-man-pages">notorously
+    terrible at generating proper man output</a>).
+  </p>
+
+  <h2>ease of use keybinds</h2>
+  <p>
+    There are a couple of keybinds I find add just that little bit more convenience that makes the editor
+    so much more pleasant to use. In this section, I'll give a couple of examples:
+    <ul>
+      <li>
+        <b>switching ':' for ';'</b>
+        <p>
+          You probably aren't aware of what ; even does inside Vim. In short, it repeats a textual find motion.
+          <code><pre>
+noremap ; :
+noremap : ;
+          </pre></code>
+        </p>
+      </li>
+
+      <li>
+        <b>easier scrolling with 'gj' and 'gk'</b>
+        <p>
+          Normally, j and k browse through lines, which means if there's line wrapping you'll jump straight up
+          to the next line regards of what your display line is. I find that this is mostly unwanted behaviour,
+          so this rebinds it to gj and gk (which browse in display lines).
+          <code><pre>
+noremap j gj
+noremap k gk
+          </pre></code>
+        </p>
+      </li>
+
+      <li>
+        <b>command forking with '!'</b>
+        <p>
+          This one is just a simple rebind to make forking commands inside of the Vim shell easier.
+          <code><pre>
+noremap ! :!
+          </pre></code>
+        </p>
+      </li>
+
+      <li>
+        <b>disable history lookup</b>
+        <p>
+          I'm possibly not alone in this, but history look-up is annoying. I find that when I do need to find
+          a command I recently executed, simply pressing &lt;Up> while inside the command prompt is more convenient
+          than finding it on the history tab, and whenever I do open it up it is by accident. Therefore I disable
+          opening it entirely to solve the issue.
+          <code><pre>
+noremap q: &lt;nop>
+noremap &lt;C-f> &lt;nop>
+          </pre></code>
+        </p>
+      </li>
+
+    </ul>
+  </p>
+
+  <h2>man page</h2>
+  <p>
+    Lastly, if you've disabled K and remapped it to something else, there's another way of getting manpage access inside of
+    Vim: the <code>Man</code> command. Using <code>:Man [pagename]</code> opens up a shell window with a manpage.
+    Personally, I find a vertical window more pleasant to look at (since horizontal will cut your screen in half, and
+    most code that you'll use manpages inside, C and C++, will have some sort of line limit at 80 or 100).
+    <code><pre>
+noremap &lt;Leader>m :vertical :Man 
+    </pre></code>
+    You'll need the filetype plugin to enable this behaviour, but enabling it is simple enough, put this at the top
+    of your <code>.vimrc</code> if you haven't already
+    <code><pre>
+filetype plugin on
+    </pre></code>
+  </p>
+
+  <h2>conclusion</h2>
+  <p>
+    Vim is a very flexible editor that allows itself to mold to one's requirements. While some behaviour might not
+    be default, it is not hard to implement them inside a <code>.vimrc</code> that makes the editing experience
+    much more pleasant. I believe one of Vim's main strongpoints and why it has remained one of the most used editors
+    throughout all the years, besides it's well documented keymapping, is it's extensive customisability.
+  </p>
+
+  <p>
+    Vim charityware's nature also makes it special. The project's main goal is to raise funds for <a href="https://iccf-holland.org/">ICCF Holland</a>.
+    This goes to show the extent of Bram's mentality towards his own creation, and makes his missing presence going
+    forward ever more absent in a sea of for-profit and ad-ridden software.
+  </p>
+
+  <h2>references:</h2>
+  <p>
+    <ul style="list-style-type:'- ';">
+      <li><a href="https://www.youtube.com/watch?v=aHm36-na4-4">Damian Conway, "More Instantly Better Vim"</a></li>
+      <li><a href="https://vimhelp.org">vimhelp.org: online vim help files</a></li>
+    </ul>
+  </p>
+
+</body>
+
+<footer>
+  <p><a href="../index.html">home</a></p>
+</footer>
+
+</html>

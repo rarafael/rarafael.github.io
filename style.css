@@ -1,18 +1,23 @@
 * {
-    background-color: #000;
-    color: #fff;
+    background-color: #181818;
+    color: #d0c0b0;
+}
+
+pre code {
+    padding: 0px;
+    font-size: 12px
 }
 
 code {
-    background-color: #222;
-    font-size: 12px;
+    font-size: 13px;
+    padding: 1px 3px 1px;
+    background-color: #080808;
+    color: #ffe0c0;
 }
 
 pre {
-    background-color: #222;
+    background-color: #080808;
     font-size: 12px;
-    padding-top: 10px;
-    padding-bottom: 0px;
     padding-left: 20px;
     margin-left: 40px;
     margin-right: 40px;

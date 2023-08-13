@@ -33,15 +33,15 @@
 
   <p>
     So a simple object inside of C could look like:
-    <code><pre>
+    <pre><code>
 typedef struct {
     int x;
     int y;
     int (*add)(Object *self);
 } Class;
-    </pre></code>
+    </code></pre>
     And <code>add</code> could be implemented and used in such way:
-    <code><pre>
+    <pre><code>
 int add(Class *self)
 {
     return self->x + self->y;
@@ -54,14 +54,14 @@ Class object = {
 };
 
 object.add(&object) == 5 /* true */
-    </pre></code>
+    </code></pre>
   </p>
 
   <h2>virtual tables</h2>
   <p>
     You might realize some problems with this if you're midly experienced in C, take this ludicrous
     object for example:
-    <code><pre>
+    <pre><code>
 typedef struct {
     int x;
     int y;
@@ -72,7 +72,7 @@ typedef struct {
     ...
     int (*function821)(Class *self, char different_arg);
 } Class;
-    </pre></code>
+    </code></pre>
     Since all the function pointers in the object are being stored in the struct itself, that means
     all objects declared will hold a copy of all function pointers, which increases the size each of
     them takes tremendously. In my x86_64 machine, <code>sizeof(void*)</code> returns 8, which means
@@ -83,7 +83,7 @@ typedef struct {
 
   <p>
     A virtual table holds pointers to the methods, and can then be referenced by the object, i.e.
-    <code><pre>
+    <pre><code>
 typedef struct ClassVirtualTable {
     int (*add)(Class *self);
 } ClassVirtualTable;
@@ -93,10 +93,10 @@ typedef struct Class {
     int x;                  /* specifically the first member */
     int y;
 } Class;
-    </pre></code>
+    </code></pre>
     You can then initialize an object pointing to a <code>static</code> ClassVirtualTable, which holds
     all the methods' pointers.
-    <code><pre>
+    <pre><code>
 int add(Class *self) { return self->x + self->y; }
 
 static ClassVirtualTable global_vtb = {
@@ -105,7 +105,7 @@ static ClassVirtualTable global_vtb = {
 
 Class init(int x, int y)
 {
-    return (Class) { /* look at <a style="background-color:#222;" href="https://en.cppreference.com/w/c/language/compound_literal">compound literals!</a> */
+    return (Class) { /* look at <a style="background-color:#080808;" href="https://en.cppreference.com/w/c/language/compound_literal">compound literals!</a> */
         .vtb = &global_vtb
         .x = x,
         .y = y,
@@ -119,7 +119,7 @@ Class object_3 = init(2, 0);
 object_1.vtb->add(&object_1) == 5  /* true */
 object_2.vtb->add(&object_2) == 12 /* true */
 object_3.vtb->add(&object_3) == 2  /* true */
-    </pre></code>
+    </code></pre>
     In this example, each object initiated only holds a single pointer which holds all functions.
   </p>
 
@@ -128,18 +128,18 @@ object_3.vtb->add(&object_3) == 2  /* true */
     is not pleasing to look at, specially when inside a larger function involving other objects. It would be
     nice if we could have the <code>object.add(&object)</code> syntax while maintaining the virtual table benefits.
     <p>With a bit of C hackiness, we can!</p>
-    <code><pre>
+    <pre><code>
 Class object = init(2, 3);
 ClassVirtualTable **ref = &object.vtb;
 
 (*ref)->add(ref) == 5 /* true */
-    </pre></code>
+    </code></pre>
     According to the C standard, a pointer to a struct's first element will always return a pointer to the
     struct itself, therefore <code>ref</code> points to <code>object</code> in this example.
   </p>
   <p>
     This is because of how memory is laid out:
-    <code><pre>
+    <pre><code>
 +=========================...
 # struct data being stored...
 +=========================...
@@ -152,7 +152,7 @@ ClassVirtualTable **ref = &object.vtb;
 |
 struct's pointer starts here, therefore dereferencing this
 dereferences the vtable pointer as well
-    </pre></code>
+    </code></pre>
     As long as you keep the vtable struct as the first member, you can use this cleaner syntax.
   </p>
 
@@ -169,7 +169,7 @@ dereferences the vtable pointer as well
     naming parts of your object's members as "private", which insinuate to the caller that it should be
     accessible directly. Another option is to use type aware pointers to an incomplete type.
     <p>Take the following code, for example:</p>
-    <code><pre>
+    <pre><code>
 /* object.h */
 
 typedef struct ClassPrivate ClassPrivate;
@@ -181,8 +181,8 @@ typedef struct {
 } Class;
 
 Class init(int x, int y);
-    </pre></code>
-    <code><pre>
+    </code></pre>
+    <pre><code>
 /* object.c */
 
 typedef struct ClassPrivate {
@@ -204,8 +204,8 @@ Class init(int x, int y)
         .destructor = destructor
     };
 }
-    </pre></code>
-    <code><pre>
+    </code></pre>
+    <pre><code>
 /* usage.c */
 
 #include "object.h"
@@ -217,7 +217,7 @@ Class object = init(2, 3);
 
 object.private_stuff(&object) == 5 /* true */
 object.destructor(&object);
-    </pre></code>
+    </code></pre>
     Additionally, the private parts of the object in this case can be altered without changing the whole
     of the object's size, which otherwise <a href="https://lwn.net/Articles/605607/">has caused problems before</a><br>
   </p>
@@ -240,7 +240,7 @@ object.destructor(&object);
     The Animal class contains informations of how many legs the animal has and what is it's average lifespan,
     and contains a method that says how many years it has 'per leg'. The Cat subclass adds a new method called
     <code>meow()</code> that prints out "meow".
-    <code><pre>
+    <pre><code>
 typedef struct {
     int (*years_per_leg)(AnimalClass *self);
 } AnimalClassVirtualTable;
@@ -255,10 +255,10 @@ typedef struct {
     AnimalClass _;
     void (*meow)(CatClass *self);
 } CatClass;
-    </pre></code>
+    </code></pre>
     Using our previous knowledge of structs presented in the Virtual Tables section, we know that a pointer to
     CatClass's <code>_</code> is going to point to the CatClass struct itself, which means we can apply the following:
-    <code><pre>
+    <pre><code>
 CatClass cat_object = {
     ._ = (AnimalClass) {
         .vtb = gvtb,
@@ -272,14 +272,14 @@ AnimalClass *cat_animal_object = &cat_object._;
 
 cat_animal_object->vtb->years_per_leg(&cat_animal_object) == 4 /* true */
 cat_object.meow(&cat_object) /* "meow" */
-    </pre></code>
+    </code></pre>
     And you can even enhance it pointing to AnimalClass' virtual table
-    <code><pre>
+    <pre><code>
 AnimalClassVirtualTable **ref = &cat_object._.vtb;
 
 (*ref)->years_per_leg(ref) == 4 /* true */
 cat_object.meow((CatClass*)ref) /* "meow" */
-    </pre></code>
+    </code></pre>
   </p>
 
   <h2>polymorphism</h2>
@@ -288,7 +288,7 @@ cat_object.meow((CatClass*)ref) /* "meow" */
     idea that an implementation of a class can be called on another class and maintain its functionality
     - a generic of sorts for classes. Such functionality can be implemented with C's own <code>_Generic</code>
     preprocessor directive:
-    <code><pre>
+    <pre><code>
 typedef struct {
     const char *(*add)(StringClass *self, const char *appendee);
     char *string;
@@ -314,13 +314,13 @@ const char *number_class_add_impl(NumberClass *self, int addnum)
                 StringClass*: string_class_add_impl, \
                 NumberClass*: number_class_add_impl  \
                 )(A,B)
-    </pre></code>
+    </code></pre>
   </p>
 
   <p>
     This implementation has limitations, such as the scope of both functions needing to be exposed to
     the caller. Another way is to use the vtables we introduced earlier to simplify this process:
-    <code><pre>
+    <pre><code>
 typedef struct {
     void (*speak)(void);
 } CommonClassVirtualTable;
@@ -370,7 +370,7 @@ DogClass dog_object = dog_init(void);
 
 speak(&cat_object); /* "meow" */
 speak(&dog_object); /* "woof" */
-    </pre></code>
+    </code></pre>
     Note that this takes advantage of the fact that the <code>speak()</code> function is the first
     in both structs, so as long as they share the same virtual table order you should be able to call
     the same functions as they're assigned to their own global vtables.

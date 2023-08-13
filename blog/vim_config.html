@@ -39,10 +39,10 @@
 
   <p>
     My simple solution to this is to remap these keys to J and K (<i>capital j and k</i>). 
-    <code><pre>
+    <pre><code>
 noremap J }
 noremap K {
-    </pre></code>
+    </code></pre>
     Not only are they
     easier to reach and more intuitive, the original keybinds are not particularly useful. <a href="https://vimhelp.org/change.txt.html#J">J</a>
     merges your current line with the top one, which is not something that I find occurs very often.
@@ -62,10 +62,10 @@ noremap K {
         <b>switching ':' for ';'</b>
         <p>
           You probably aren't aware of what ; even does inside Vim. In short, it repeats a textual find motion.
-          <code><pre>
+          <pre><code>
 noremap ; :
 noremap : ;
-          </pre></code>
+          </code></pre>
         </p>
       </li>
 
@@ -75,10 +75,10 @@ noremap : ;
           Normally, j and k browse through lines, which means if there's line wrapping you'll jump straight up
           to the next line regards of what your display line is. I find that this is mostly unwanted behaviour,
           so this rebinds it to gj and gk (which browse in display lines).
-          <code><pre>
+          <pre><code>
 noremap j gj
 noremap k gk
-          </pre></code>
+          </code></pre>
         </p>
       </li>
 
@@ -86,9 +86,9 @@ noremap k gk
         <b>command forking with '!'</b>
         <p>
           This one is just a simple rebind to make forking commands inside of the Vim shell easier.
-          <code><pre>
+          <pre><code>
 noremap ! :!
-          </pre></code>
+          </code></pre>
         </p>
       </li>
 
@@ -99,10 +99,10 @@ noremap ! :!
           a command I recently executed, simply pressing &lt;Up> while inside the command prompt is more convenient
           than finding it on the history tab, and whenever I do open it up it is by accident. Therefore I disable
           opening it entirely to solve the issue.
-          <code><pre>
+          <pre><code>
 noremap q: &lt;nop>
 noremap &lt;C-f> &lt;nop>
-          </pre></code>
+          </code></pre>
         </p>
       </li>
 
@@ -115,14 +115,14 @@ noremap &lt;C-f> &lt;nop>
     Vim: the <code>Man</code> command. Using <code>:Man [pagename]</code> opens up a shell window with a manpage.
     Personally, I find a vertical window more pleasant to look at (since horizontal will cut your screen in half, and
     most code that you'll use manpages inside, C and C++, will have some sort of line limit at 80 or 100).
-    <code><pre>
+    <pre><code>
 noremap &lt;Leader>m :vertical :Man 
-    </pre></code>
+    </code></pre>
     You'll need the filetype plugin to enable this behaviour, but enabling it is simple enough, put this at the top
     of your <code>.vimrc</code> if you haven't already
-    <code><pre>
+    <pre><code>
 filetype plugin on
-    </pre></code>
+    </code></pre>
   </p>
 
   <h2>conclusion</h2>

@@ -1,5 +1,6 @@
 * {
     background-color: #181818;
+    font-family: VGA;
     color: #d0c0b0;
 }
 
@@ -8,8 +9,16 @@ pre code {
     font-size: 12px
 }
 
+h1 {
+    font-family: Conv;
+}
+
+h2 {
+    font-family: Conv;
+}
+
 code {
-    font-size: 13px;
+    font-size: 15px;
     padding: 1px 3px 1px;
     background-color: #080808;
     color: #ffe0c0;
@@ -17,7 +26,7 @@ code {
 
 pre {
     background-color: #080808;
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 20px;
     margin-left: 40px;
     margin-right: 40px;
@@ -46,4 +55,14 @@ a:link {
 
 a:visited {
     color: #E02C6D;
+}
+
+@font-face {
+    font-family: VGA;
+    src: url('resources/vga_8x16.woff');
+}
+
+@font-face {
+    font-family: Conv;
+    src: url('resources/conv.woff');
 }

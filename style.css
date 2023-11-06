@@ -56,13 +56,3 @@ a:link {
 a:visited {
     color: #E02C6D;
 }
-
-@font-face {
-    font-family: VGA;
-    src: url('resources/vga_8x16.woff');
-}
-
-@font-face {
-    font-family: Conv;
-    src: url('resources/conv.woff');
-}
